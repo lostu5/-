@@ -1,0 +1,64 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+  body {
+    font: bold 100% Helvetica, sans-serif;
+}
+ 
+.circular {
+    width: 100px;
+    height: 100px;
+    margin: 50px auto 0;
+    font-size: 10px;
+    font-size: 4px;
+    letter-spacing: 1.1px;
+}
+ 
+.circular svg {
+    display: block;
+    overflow: visible;
+}
+ 
+ 
+.circular text { fill: currentColor }
+.circular path { fill: none; }
+</style>
+<body>
+<div class="circular">
+   满80元使用满80元使用满80元使用. 满8ZCz
+</div>
+</body>
+<script type="text/javascript">
+  function $$(selector, context) {
+    context = context || document;
+    var elements = context.querySelectorAll(selector);
+    return Array.prototype.slice.call(elements);
+}
+ 
+$$('.circular').forEach(function(el) {
+    var NS = "http://www.w3.org/2000/svg";
+     
+    var svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("viewBox", "50 0 80 40");
+     
+    var circle = document.createElementNS(NS, "path");
+    circle.setAttribute("d", "M50 10 C 70 20, 110 20, 120 10");
+    circle.setAttribute("id", "circle");
+     
+    var text = document.createElementNS(NS, "text");
+    var textPath = document.createElementNS(NS, "textPath");
+    textPath.setAttributeNS("http://www.w3.org/1999/xlink", 'xlink:href', '#circle');
+    textPath.textContent = el.textContent;
+    text.appendChild(textPath);
+     
+    svg.appendChild(circle);
+    svg.appendChild(text);
+     
+    el.textContent = '';
+    el.appendChild(svg);
+});
+</script>
+</html>
